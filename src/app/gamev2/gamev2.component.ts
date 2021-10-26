@@ -44,7 +44,7 @@ export class Gamev2Component implements OnInit, AfterViewInit {
 
       p.setup = () => {
         p.createCanvas(1800, 1200);
-        this.blob = this.Blob(1500 , 1500 , 500);
+        this.blob = this.Blob(1500 , 1500 , 250);
         for (let i = 0; i < 2000; i++) {
           let x = p.random(0, 25000);
           let y = p.random(0, 25000);
