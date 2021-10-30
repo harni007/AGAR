@@ -1,5 +1,4 @@
-import { Component, OnInit, ElementRef, Renderer2, AfterViewChecked, AfterViewInit, ViewChild } from '@angular/core';
-import { Socket } from 'ngx-socket-io';
+import { Component, OnInit, ElementRef, Renderer2, AfterViewInit, ViewChild } from '@angular/core';
 import { map } from 'rxjs/operators';
 
 
@@ -36,15 +35,10 @@ export class Gamev2Component implements OnInit, AfterViewInit {
   constructor(
     private el: ElementRef,
     private renderer: Renderer2,
-    private socket: Socket
   ) {}
 
   ngOnInit() {
     const data = {x: 1500, y: 1500, r:550};
-
-    this.socket.on('heartbeat', i => {
-      console.log(i, 'j');
-    });
 
   }
 
