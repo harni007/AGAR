@@ -124,31 +124,50 @@ export class Gamev2Component implements OnInit, AfterViewInit {
         p.fill(0);
         p.ellipse(this.blob.pos.x, this.blob.pos.y, this.blob.r * 2, this.blob.r * 2);
 
+        let blobSpeed = 10;
+
+        if (this.blob.r > 200) {
+          blobSpeed = 9.8;
+        }
+        if (this.blob.r > 400) {
+          blobSpeed = 9.6;
+        }
+        if (this.blob.r > 600) {
+          blobSpeed = 9.4;
+        }
+        if (this.blob.r > 800) {
+          blobSpeed = 9.2;
+        }
+        if (this.blob.r > 1000) {
+          blobSpeed = 9;
+        }
+        if (this.blob.r > 2000) {
+          blobSpeed = 8.5;
+        }
         // update;
         var newvel = p.createVector(p.mouseX - p.width / 2, p.mouseY - p.height / 2);
         if (this.blob.pos.x > -1 && this.blob.pos.y > -1 && this.blob.pos.x < 25500 && this.blob.pos.y < 25500) {
-          newvel.setMag(this.blob.r / 10);
+          newvel.setMag(blobSpeed);
           this.blob.vel.lerp(newvel, 0.2)
           this.blob.pos.add(this.blob.vel);
         } else {
           if (this.blob.pos.x < -1 && p.createVector(p.mouseX - p.width / 2, p.mouseY - p.height / 2).setMag(3).x > 0){
-            newvel.setMag(this.blob.r / 10);
+            newvel.setMag(blobSpeed);
             this.blob.vel.lerp(newvel, 0.2)
             this.blob.pos.add(this.blob.vel);
           }
           if (this.blob.pos.y < 0 && p.createVector(p.mouseX - p.width / 2, p.mouseY - p.height / 2).setMag(3).y > 0){
-            newvel.setMag(this.blob.r / 10);
+            newvel.setMag(blobSpeed);
             this.blob.vel.lerp(newvel, 0.2)
             this.blob.pos.add(this.blob.vel);
           }
           if (this.blob.pos.x > 25500 && p.createVector(p.mouseX - p.width / 2, p.mouseY - p.height / 2).setMag(3).x < 1){
-            // console.log('error', p.createVector(p.mouseX - p.width / 2, p.mouseY - p.height / 2).setMag(3));
-            newvel.setMag(this.blob.r / 10);
+            newvel.setMag(blobSpeed);
             this.blob.vel.lerp(newvel, 0.2)
             this.blob.pos.add(this.blob.vel);
           }
           if (this.blob.pos.y > 25500 && p.createVector(p.mouseX - p.width / 2, p.mouseY - p.height / 2).setMag(3).y < 1){
-            newvel.setMag(this.blob.r / 10);
+            newvel.setMag(blobSpeed);
             this.blob.vel.lerp(newvel, 0.2)
             this.blob.pos.add(this.blob.vel);
           }
